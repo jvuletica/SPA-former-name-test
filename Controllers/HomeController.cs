@@ -3,28 +3,26 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using hrcloud_test.Models;
 
 namespace hrcloud_test.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index()
+        private ContactListContext db = new ContactListContext();
+        public JsonResult Index()
         {
-            return View();
-        }
-
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
+            var query = from c in db.Contact
+                        join id in db.EmailAddr
+                        on c.ContactId equals id.ContactId
+                        select new
+                        {
+                            Name = c.Name,
+                            Surname = c.Surname,
+                            Address = c.Address,
+                            EmailAddress = id.Address
+                        };
+            return Json(query, JsonRequestBehavior.AllowGet);
         }
     }
 }
