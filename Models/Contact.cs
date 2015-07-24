@@ -11,6 +11,7 @@ namespace hrcloud_test.Models
         public string Name { get; set; }
         public string Surname { get; set; }
         public string Address { get; set; }
+        public string Tag { get; set; }
         public virtual ICollection<EmailAddr> EmailAddr { get; set; }
         public virtual ICollection<TelNum> TelNum { get; set; }
     }

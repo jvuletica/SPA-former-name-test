@@ -1,1 +1,12 @@
-﻿asf
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Test</title>
+    @Scripts.Render("~/bundles/angular")
+</head>
+<body ng-app="ContactListApp" ng-controller="MainController">
+    <input type="text" ng-model="models.test" />
+    <h1>{{models.test}}</h1>
+    <h1>{{test}}</h1>
+</body>
+</html>

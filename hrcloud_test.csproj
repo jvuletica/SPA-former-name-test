@@ -134,6 +134,8 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\angular-route.min.js" />
     <Content Include="Scripts\angular.min.js" />
+    <Content Include="Scripts\ContactListApp.js" />
+    <Content Include="Scripts\Controllers\MainController.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">

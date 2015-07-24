@@ -9,7 +9,11 @@ namespace hrcloud_test.Controllers
 {
     public class HomeController : Controller
     {
-        private ContactListContext db = new ContactListContext();
+        public ActionResult Index()
+        {
+            return View();
+        }
+        /*private ContactListContext db = new ContactListContext();
         public JsonResult Index()
         {
             var query = from c in db.Contact
@@ -23,6 +27,6 @@ namespace hrcloud_test.Controllers
                             EmailAddress = id.Address
                         };
             return Json(query, JsonRequestBehavior.AllowGet);
-        }
+        }*/
     }
 }
