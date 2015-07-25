@@ -28,3 +28,9 @@ c:\users\josip\documents\visual studio 2013\Projects\hrcloud_test\hrcloud_test\b
 c:\users\josip\documents\visual studio 2013\Projects\hrcloud_test\hrcloud_test\obj\Debug\hrcloud_test.csprojResolveAssemblyReference.cache
 c:\users\josip\documents\visual studio 2013\Projects\hrcloud_test\hrcloud_test\obj\Debug\hrcloud_test.dll
 c:\users\josip\documents\visual studio 2013\Projects\hrcloud_test\hrcloud_test\obj\Debug\hrcloud_test.pdb
+C:\Users\Josip\documents\visual studio 2013\Projects\hrcloud_test\hrcloud_test\bin\System.Net.Http.Formatting.dll
+C:\Users\Josip\documents\visual studio 2013\Projects\hrcloud_test\hrcloud_test\bin\System.Web.Http.dll
+C:\Users\Josip\documents\visual studio 2013\Projects\hrcloud_test\hrcloud_test\bin\System.Web.Http.WebHost.dll
+C:\Users\Josip\documents\visual studio 2013\Projects\hrcloud_test\hrcloud_test\bin\System.Net.Http.Formatting.xml
+C:\Users\Josip\documents\visual studio 2013\Projects\hrcloud_test\hrcloud_test\bin\System.Web.Http.xml
+C:\Users\Josip\documents\visual studio 2013\Projects\hrcloud_test\hrcloud_test\bin\System.Web.Http.WebHost.xml

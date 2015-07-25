@@ -4,9 +4,15 @@
     <title>Test</title>
     @Scripts.Render("~/bundles/angular")
 </head>
-<body ng-app="ContactListApp" ng-controller="MainController">
-    <input type="text" ng-model="models.test" />
-    <h1>{{models.test}}</h1>
-    <h1>{{test}}</h1>
+<body ng-app="ContactListApp">
+    
+    <ul>
+        <li><a href="/#/showcontacts">ShowContacts</a></li>
+        <li><a href="/#/routeTwo">Route Two</a></li>
+        <li><a href="/#/routeThree">Route Three</a></li>
+    </ul>
+
+    <div ng-view></div>
+
 </body>
 </html>

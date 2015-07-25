@@ -13,20 +13,9 @@ namespace hrcloud_test.Controllers
         {
             return View();
         }
-        /*private ContactListContext db = new ContactListContext();
-        public JsonResult Index()
+        public ActionResult ShowContacts()
         {
-            var query = from c in db.Contact
-                        join id in db.EmailAddr
-                        on c.ContactId equals id.ContactId
-                        select new
-                        {
-                            Name = c.Name,
-                            Surname = c.Surname,
-                            Address = c.Address,
-                            EmailAddress = id.Address
-                        };
-            return Json(query, JsonRequestBehavior.AllowGet);
-        }*/
+            return PartialView();
+        }
     }
 }
