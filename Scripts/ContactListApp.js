@@ -28,7 +28,7 @@ var configFunction = function ($routeProvider) {
     $routeProvider.
     when("/contactdetails", {
         templateUrl: "home/contactdetails",
-        controller: "UpdateContactController"
+        controller: "ContactDetailsController"
     });
 }
 configFunction.$inject = ["$routeProvider"];
