@@ -3,16 +3,17 @@
 <head>
     <title>Test</title>
     @Scripts.Render("~/bundles/angular")
+    @Styles.Render("~/Content/css")
 </head>
 <body ng-app="ContactListApp">
-    
-    <ul>
-        <li><a href="/#/showcontacts">ShowContacts</a></li>
-        <li><a href="/#/routeTwo">Route Two</a></li>
-        <li><a href="/#/routeThree">Route Three</a></li>
-    </ul>
-
+    <header ng-controller="IndexController">
+        <input type="search" ng-model="search_string" />
+        <button ng-click="Find(search_string)">Find</button>
+        <p ng-bind="search_string"></p>
+    </header>
+    <a href="/#/showcontacts">Show Contacts</a>
+    <a href="/#/addcontact">Add Contact</a>
+    <!--ng-view for displaying partial views-->
     <div ng-view></div>
-
 </body>
 </html>

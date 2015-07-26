@@ -16,26 +16,10 @@ namespace hrcloud_test.Controllers
     {
         private ContactListContext db = new ContactListContext();
 
-        //used to return simple contacts object
-        public class SimpleContacts
-        {
-            public string name { get; set; }
-            public string surname { get; set; }
-            public string address { get; set; }
-        }
-
         // GET: api/Contacts
-        public List<SimpleContacts> GetContact()
+        public List<Contact> GetContact()
         {
-            var query = from contacts in db.Contact
-                        select new SimpleContacts
-                        {
-                            name = contacts.Name,
-                            surname = contacts.Surname,
-                            address = contacts.Address
-                        };
-            return query.ToList();
-            //return db.Contact.ToList();
+            return db.Contact.ToList();
         }
 
         // GET: api/Contacts/5

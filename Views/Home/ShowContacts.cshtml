@@ -1,1 +1,15 @@
-﻿{{contacts}}
+﻿<!--ShowContacts partial view-->
+<table>
+    <thead>ContactList</thead>
+    <tr>
+        <td>Name</td>
+        <td>Surname</td>
+        <td>Address</td>
+    </tr>
+    <tr ng-repeat="contact in contacts">
+        <td ng-bind="contact.Name"></td>
+        <td ng-bind="contact.Surname"></td>
+        <td ng-bind="contact.Address"></td>
+        <td><button ng-click="Delete(contact.ContactId)">Delete</button></td>
+    </tr>
+</table>

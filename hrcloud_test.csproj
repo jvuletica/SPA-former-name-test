@@ -149,6 +149,8 @@
     <Content Include="Scripts\angular-route.min.js" />
     <Content Include="Scripts\angular.min.js" />
     <Content Include="Scripts\ContactListApp.js" />
+    <Content Include="Scripts\Controllers\AddContactController.js" />
+    <Content Include="Scripts\Controllers\IndexController.js" />
     <Content Include="Scripts\Controllers\ShowContactsController.js" />
     <Content Include="Scripts\Services\MainService.js" />
     <Content Include="Scripts\_references.js" />
@@ -164,7 +166,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Json\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -172,6 +173,7 @@
     <Content Include="Scripts\angular.min.js.map" />
     <Content Include="Scripts\angular-route.min.js.map" />
     <Content Include="Views\Home\ShowContacts.cshtml" />
+    <Content Include="Views\Home\AddContact.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
