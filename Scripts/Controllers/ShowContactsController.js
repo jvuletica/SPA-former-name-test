@@ -18,8 +18,8 @@
             ShowContactsInDB();
         });
     };
-    $scope.TargetForUpdate = function (target_contact) {
-        MainService.TargetContactForUpdate = target_contact;
+    $scope.TargetContact = function (target_contact) {
+        MainService.TargetContact = target_contact;
     };
 };
 ShowContactsController.$inject = ["$scope", "MainService"];

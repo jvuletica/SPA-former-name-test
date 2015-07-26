@@ -6,6 +6,7 @@ ContactListApp.controller("IndexController", IndexController);
 ContactListApp.controller("ShowContactsController", ShowContactsController);
 ContactListApp.controller("AddContactController", AddContactController);
 ContactListApp.controller("UpdateContactController", UpdateContactController);
+ContactListApp.controller("ContactDetailsController", ContactDetailsController);
 
 //define routing
 var configFunction = function ($routeProvider) {
@@ -22,6 +23,11 @@ var configFunction = function ($routeProvider) {
     $routeProvider.
     when("/updatecontact", {
         templateUrl: "home/updatecontact",
+        controller: "UpdateContactController"
+    });
+    $routeProvider.
+    when("/contactdetails", {
+        templateUrl: "home/contactdetails",
         controller: "UpdateContactController"
     });
 }

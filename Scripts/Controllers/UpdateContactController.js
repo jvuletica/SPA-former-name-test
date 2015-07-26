@@ -1,5 +1,5 @@
 ﻿var UpdateContactController = function ($scope, MainService) {
-    $scope.target_contact = MainService.TargetContactForUpdate;
+    $scope.target_contact = MainService.TargetContact;
     $scope.UpdateContact = function (contact) {
         var update = MainService.UpdateContact(contact);
         update.then(function () {

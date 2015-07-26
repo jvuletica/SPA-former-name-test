@@ -1,6 +1,6 @@
 ﻿var MainService = function ($http) {
     //shared object between controllers
-    var TargetContactForUpdate = {};
+    var TargetContact = {};
 
     //return all contacts
     this.GetContacts = function () {

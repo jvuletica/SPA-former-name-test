@@ -150,6 +150,7 @@
     <Content Include="Scripts\angular.min.js" />
     <Content Include="Scripts\ContactListApp.js" />
     <Content Include="Scripts\Controllers\AddContactController.js" />
+    <Content Include="Scripts\Controllers\ContactDetailsController.js" />
     <Content Include="Scripts\Controllers\IndexController.js" />
     <Content Include="Scripts\Controllers\ShowContactsController.js" />
     <Content Include="Scripts\Controllers\UpdateContactController.js" />
@@ -167,6 +168,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Search\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -176,6 +178,7 @@
     <Content Include="Views\Home\ShowContacts.cshtml" />
     <Content Include="Views\Home\AddContact.cshtml" />
     <Content Include="Views\Home\UpdateContact.cshtml" />
+    <Content Include="Views\Home\ContactDetails.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

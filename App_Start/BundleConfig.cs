@@ -12,10 +12,7 @@ namespace hrcloud_test
                         "~/Scripts/angular.min.js",
                         "~/Scripts/angular-route.min.js",
                         "~/Scripts/Services/MainService.js",
-                        "~/Scripts/Controllers/IndexController.js",
-                        "~/Scripts/Controllers/ShowContactsController.js",
-                        "~/Scripts/Controllers/AddContactController.js",
-                        "~/Scripts/Controllers/UpdateContactController.js",
+                        "~/Scripts/Controllers/*.js",
                         "~/Scripts/ContactListApp.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
