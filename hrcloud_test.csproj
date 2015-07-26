@@ -152,6 +152,7 @@
     <Content Include="Scripts\Controllers\AddContactController.js" />
     <Content Include="Scripts\Controllers\IndexController.js" />
     <Content Include="Scripts\Controllers\ShowContactsController.js" />
+    <Content Include="Scripts\Controllers\UpdateContactController.js" />
     <Content Include="Scripts\Services\MainService.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config" />
@@ -174,6 +175,7 @@
     <Content Include="Scripts\angular-route.min.js.map" />
     <Content Include="Views\Home\ShowContacts.cshtml" />
     <Content Include="Views\Home\AddContact.cshtml" />
+    <Content Include="Views\Home\UpdateContact.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -11,5 +11,6 @@
         <td ng-bind="contact.Surname"></td>
         <td ng-bind="contact.Address"></td>
         <td><button ng-click="Delete(contact.ContactId)">Delete</button></td>
+        <td><a href="/#/updatecontact" ng-click="TargetForUpdate(contact)">Update</a></td>
     </tr>
 </table>

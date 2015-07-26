@@ -15,6 +15,7 @@ namespace hrcloud_test
                         "~/Scripts/Controllers/IndexController.js",
                         "~/Scripts/Controllers/ShowContactsController.js",
                         "~/Scripts/Controllers/AddContactController.js",
+                        "~/Scripts/Controllers/UpdateContactController.js",
                         "~/Scripts/ContactListApp.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(

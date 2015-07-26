@@ -5,6 +5,7 @@ ContactListApp.service("MainService", MainService);
 ContactListApp.controller("IndexController", IndexController);
 ContactListApp.controller("ShowContactsController", ShowContactsController);
 ContactListApp.controller("AddContactController", AddContactController);
+ContactListApp.controller("UpdateContactController", UpdateContactController);
 
 //define routing
 var configFunction = function ($routeProvider) {
@@ -18,6 +19,11 @@ var configFunction = function ($routeProvider) {
             templateUrl: "home/addcontact",
             controller: "AddContactController"
         });
+    $routeProvider.
+    when("/updatecontact", {
+        templateUrl: "home/updatecontact",
+        controller: "UpdateContactController"
+    });
 }
 configFunction.$inject = ["$routeProvider"];
 ContactListApp.config(configFunction);

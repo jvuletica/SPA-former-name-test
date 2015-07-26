@@ -21,5 +21,9 @@ namespace hrcloud_test.Controllers
         {
             return PartialView();
         }
+        public ActionResult UpdateContact()
+        {
+            return PartialView();
+        }
     }
 }

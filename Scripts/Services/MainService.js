@@ -1,4 +1,7 @@
 ﻿var MainService = function ($http) {
+    //shared object between controllers
+    var TargetContactForUpdate = {};
+
     //return all contacts
     this.GetContacts = function () {
         return $http.get("/api/Contacts/");
@@ -24,5 +27,14 @@
         });
         return request;
     };
+    this.UpdateContact = function (contact) {
+        id = contact.ContactId;
+        var request = $http({
+            method: "PUT",
+            url: "/api/Contacts/" + id,
+            data: contact
+        });
+        return request;
+    }
 }
 MainService.$inject = ["$http"];

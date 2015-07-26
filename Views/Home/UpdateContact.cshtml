@@ -1,0 +1,24 @@
+﻿<!--UpdateContact partial view-->
+<table>
+    <tr>
+        <td>Tag</td>
+        <td>Name</td>
+        <td>Surname</td>
+        <td>Address</td>
+    </tr>
+    <tr>
+        <td>
+            <input type="text" ng-model="target_contact.Tag" value="{{target_contact.Tag}}" />
+        </td>
+        <td>
+            <input type="text" ng-model="target_contact.Name" value="{{target_contact.Name}}" />
+        </td>
+        <td>
+            <input type="text" ng-model="target_contact.Surname" />
+        </td>
+        <td>
+            <input type="text" ng-model="target_contact.Address" />
+        </td>
+    </tr>
+</table>
+<button ng-click="UpdateContact(target_contact)">Update</button>
