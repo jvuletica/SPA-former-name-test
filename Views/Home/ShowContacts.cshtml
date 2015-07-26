@@ -2,11 +2,13 @@
 <table>
     <thead>ContactList</thead>
     <tr>
+        <td>Tag</td>
         <td>Name</td>
         <td>Surname</td>
         <td>Address</td>
     </tr>
     <tr ng-repeat="contact in contacts">
+        <td ng-bind="contact.Tag"></td>
         <td ng-bind="contact.Name"></td>
         <td ng-bind="contact.Surname"></td>
         <td ng-bind="contact.Address"></td>

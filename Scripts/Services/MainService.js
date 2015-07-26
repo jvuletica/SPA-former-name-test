@@ -27,6 +27,7 @@
         });
         return request;
     };
+    //updates contact based on id
     this.UpdateContact = function (contact) {
         id = contact.ContactId;
         var request = $http({
@@ -36,5 +37,45 @@
         });
         return request;
     }
+    this.GetEmailById = function (id) {
+        return $http.get("/api/EmailAddrs/" + id);
+    };
+    this.AddEmail = function (email) {
+        id = email.ContactId;
+        var request = $http({
+            method: "POST",
+            url: "/api/EmailAddrs/" + id,
+            data: email
+        });
+        return request;
+    };
+    this.DeleteEmail = function (id) {
+        var request = $http({
+            method: "DELETE",
+            url: "/api/EmailAddrs/" + id,
+            data: id
+        });
+        return request;
+    };
+    this.GetTelNumById = function (id) {
+        return $http.get("/api/TelNums/" + id);
+    };
+    this.AddTel = function (tel) {
+        id = tel.ContactId;
+        var request = $http({
+            method: "POST",
+            url: "/api/TelNums/" + id,
+            data: tel
+        });
+        return request;
+    };
+    this.DeleteTel = function (id) {
+        var request = $http({
+            method: "DELETE",
+            url: "/api/TelNums/" + id,
+            data: id
+        });
+        return request;
+    };
 }
 MainService.$inject = ["$http"];

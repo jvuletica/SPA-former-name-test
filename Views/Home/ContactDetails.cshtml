@@ -1,8 +1,28 @@
-﻿Email Address:
-<ul>
-    <li ng-repeat="email in target_contact.EmailAddr">{{email.Address}}</li>
-</ul>
-Telephone Number:
-<ul>
-    <li ng-repeat="tel in target_contact.TelNum">{{tel.Number}}</li>
-</ul>
+﻿<table>
+    <tr>
+        <td>Email Address</td>
+    </tr>
+    <tr ng-repeat="email in emails">
+        <td ng-bind="email.Address"></td>
+        <td>
+            <button ng-click="DeleteEmail(email.Id)">Delete</button>
+        </td>
+    </tr>
+</table>
+<input type="text" ng-model="new_email"/>
+<button ng-click="AddEmail(new_email)">Add new email</button>
+<br />
+<br />
+<table>
+    <tr>
+        <td>Telephone Number</td>
+    </tr>
+    <tr ng-repeat="tel in telnums">
+        <td ng-bind="tel.Number"></td>
+        <td>
+            <button ng-click="DeleteTel(tel.Id)">Delete</button>
+        </td>
+    </tr>
+</table>
+<input type="text" ng-model="new_tel" />
+<button ng-click="AddTel(new_tel)">Add new tel number</button>
