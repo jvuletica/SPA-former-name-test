@@ -1,9 +1,11 @@
-﻿var ContactDetailsController = function ($scope, MainService) {
-    var target_id = MainService.TargetContact.ContactId;
+﻿var ContactDetailsController = function ($scope, $routeParams, MainService) {
+    //target from routeParam
+    target_id = $routeParams.id;
+
     function RefreshEmailList() {
         var getmail = MainService.GetEmailById(target_id);
-        getmail.then(function (param) {
-            $scope.emails = param.data;;
+        getmail.then(function (mail) {
+            $scope.emails = mail.data;
         });
     }
     function RefreshTelNumList() {
@@ -12,9 +14,18 @@
             $scope.telnums = telparam.data;
         });
     }
+    function RefreshSingleContact() {
+        var getcontact = MainService.GetSingleContact(target_id);
+        getcontact.then(function (contact) {
+            $scope.contact = contact.data;
+        });
+    }
     //fetch initial data
     RefreshEmailList();
     RefreshTelNumList();
+    RefreshSingleContact();
+
+
     $scope.AddEmail = function (emailaddr) {
         var email = {
             Address: emailaddr,
@@ -33,15 +44,23 @@
         });
     };
     $scope.AddTel = function (num) {
-        var tel = {
-            Number: num,
-            ContactId: target_id
-        };
-        var addtel = MainService.AddTel(tel);
-        addtel.then(function () {
-            RefreshTelNumList();
-            $scope.new_tel = null;
-        });
+        //check if num object is number
+        if (num % 1 != 0)
+        {
+            alert("Telephone must be number");
+            $scope.new_tel = null;            
+        }
+        else {
+            var tel = {
+                Number: num,
+                ContactId: target_id
+            };
+            var addtel = MainService.AddTel(tel);
+            addtel.then(function () {
+                RefreshTelNumList();
+                $scope.new_tel = null;
+            });
+        }
     };
     $scope.DeleteTel = function (id) {
         var del = MainService.DeleteTel(id);
@@ -50,4 +69,4 @@
         });
     };
 };
-ContactDetailsController.$inject = ["$scope", "MainService"];
+ContactDetailsController.$inject = ["$scope", "$routeParams", "MainService"];

@@ -1,4 +1,4 @@
-﻿var ShowContactsController = function ($scope, MainService) {
+﻿var ShowContactsController = function ($scope, $location, MainService) {
     //returns all contacts in db to scope
     function ShowContactsInDB() {
         var getcontacts = MainService.GetContacts();
@@ -18,8 +18,13 @@
             ShowContactsInDB();
         });
     };
-    $scope.TargetContact = function (target_contact) {
+    $scope.GoToDetails = function (target_contact) {
         MainService.TargetContact = target_contact;
+        $location.path("/contactdetails/" + target_contact.ContactId);
+    };
+    $scope.GoToUpdate = function (target_contact) {
+        MainService.TargetContact = target_contact;
+        $location.path("/updatecontact");
     };
 };
-ShowContactsController.$inject = ["$scope", "MainService"];
+ShowContactsController.$inject = ["$scope", "$location", "MainService"];

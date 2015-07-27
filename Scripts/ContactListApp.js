@@ -21,15 +21,15 @@ var configFunction = function ($routeProvider) {
             controller: "AddContactController"
         });
     $routeProvider.
-    when("/updatecontact", {
-        templateUrl: "home/updatecontact",
-        controller: "UpdateContactController"
-    });
+        when("/updatecontact", {
+            templateUrl: "home/updatecontact",
+            controller: "UpdateContactController"
+        });
     $routeProvider.
-    when("/contactdetails", {
-        templateUrl: "home/contactdetails",
-        controller: "ContactDetailsController"
-    });
+        when("/contactdetails/:id", {
+            templateUrl: "home/contactdetails",
+            controller: "ContactDetailsController"
+        });
 }
 configFunction.$inject = ["$routeProvider"];
 ContactListApp.config(configFunction);

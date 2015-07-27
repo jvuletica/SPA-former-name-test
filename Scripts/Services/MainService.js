@@ -10,6 +10,9 @@
     this.GetSingleContact = function (id) {
         return $http.get("/api/Contacts/" + id);
     };
+    this.Search = function (search_string) {
+        return $http.get("/api/Contacts/search/" + search_string);
+    };
     this.AddContact = function (contact) {
         var request = $http({
             method: "POST",

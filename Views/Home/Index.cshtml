@@ -7,12 +7,24 @@
 </head>
 <body ng-app="ContactListApp">
     <header ng-controller="IndexController">
-        <input type="search" ng-model="search_string" />
-        <button ng-click="Find(search_string)">Find</button>
-        <p ng-bind="search_string"></p>
+        <a href="/#/showcontacts">Show All Contacts</a>
+        <a href="/#/addcontact">Add Contact</a>
+        <br /><br />
+        <form ng-submit="Find()">
+            Search:<input type="search" ng-model="search_string" />
+        </form>
+        <table>
+            <tr ng-repeat="result in search_results">
+                <td ng-bind="result.Tag"></td>
+                <td ng-bind="result.Name"></td>
+                <td ng-bind="result.Surname"></td>
+                <td ng-bind="result.Address"></td>
+                <td><button ng-click="Delete(result)">Delete</button></td>
+                <td><button ng-click="GoToUpdate(result)">Update</button></td>
+                <td><button ng-click="GoToDetails(result.ContactId)">Details</button></td>
+            </tr>
+        </table>
     </header>
-    <a href="/#/showcontacts">Show Contacts</a>
-    <a href="/#/addcontact">Add Contact</a>
     <!--ng-view for displaying partial views-->
     <div ng-view></div>
 </body>

@@ -16,26 +16,60 @@ namespace hrcloud_test.Controllers
     {
         private ContactListContext db = new ContactListContext();
 
+        public class SimpleContact
+        {
+            public int ContactId { get; set; }
+            public string Tag { get; set; }
+            public string Name { get; set; }
+            public string Surname { get; set; }
+            public string Address { get; set; }
+            public List<string> EmailList { get; set; }
+        }
+
         // GET: api/Contacts
+        [Route("api/Contacts")]
         public List<Contact> GetContact()
         {
             return db.Contact.ToList();
         }
 
         // GET: api/Contacts/5
+        [Route("api/Contacts/{id}")]
         [ResponseType(typeof(Contact))]
         public IHttpActionResult GetContact(int id)
         {
-            Contact contact = db.Contact.Find(id);
-            if (contact == null)
-            {
-                return NotFound();
-            }
+            var query = from c in db.Contact
+                        where c.ContactId == id
+                        select new SimpleContact
+                        {
+                            ContactId = c.ContactId,
+                            Tag = c.Tag,
+                            Name = c.Name,
+                            Surname = c.Surname,
+                            Address = c.Address,
+                        };
+            return Ok(query.ToList());
+        }
 
-            return Ok(contact);
+        [Route("api/Contacts/search/{target}")]
+        public List<SimpleContact> GetByString(string target) {
+            var query = from c in db.Contact
+                        where (c.Tag.Contains(target))
+                        ||(c.Name.Contains(target))
+                        || (c.Surname.Contains(target))
+                        select new SimpleContact
+                        {
+                            ContactId = c.ContactId,
+                            Tag = c.Tag,
+                            Name = c.Name,
+                            Surname = c.Surname,
+                            Address = c.Address,
+                        };
+                return query.ToList();
         }
 
         // PUT: api/Contacts/5
+        [Route("api/Contacts/{id}")]
         [ResponseType(typeof(void))]
         public IHttpActionResult PutContact(int id, Contact contact)
         {
@@ -71,6 +105,7 @@ namespace hrcloud_test.Controllers
         }
 
         // POST: api/Contacts
+        [Route("api/Contacts")]
         [ResponseType(typeof(Contact))]
         public IHttpActionResult PostContact(Contact contact)
         {
@@ -82,10 +117,11 @@ namespace hrcloud_test.Controllers
             db.Contact.Add(contact);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = contact.ContactId }, contact);
+            return Ok(contact);
         }
 
         // DELETE: api/Contacts/5
+        [Route("api/Contacts/{id}")]
         [ResponseType(typeof(Contact))]
         public IHttpActionResult DeleteContact(int id)
         {
