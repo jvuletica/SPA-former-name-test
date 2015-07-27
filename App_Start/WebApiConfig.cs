@@ -15,12 +15,7 @@ namespace hrcloud_test
                 name: "DefaultApi",
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
-            );/*
-            config.Routes.MapHttpRoute(
-                name: "Search",
-                routeTemplate: "api/{controller}/{action}"
-            );*/
-
+            );
             config.Routes.MapHttpRoute("DefaultApiWithAction", "api/{controller}/{action}");
             var json = config.Formatters.JsonFormatter;
             json.SerializerSettings.PreserveReferencesHandling = Newtonsoft.Json.PreserveReferencesHandling.Objects;
