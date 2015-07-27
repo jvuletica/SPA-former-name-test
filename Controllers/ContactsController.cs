@@ -23,7 +23,6 @@ namespace hrcloud_test.Controllers
             public string Name { get; set; }
             public string Surname { get; set; }
             public string Address { get; set; }
-            public List<string> EmailList { get; set; }
         }
 
         // GET: api/Contacts
