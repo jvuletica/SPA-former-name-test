@@ -6,36 +6,36 @@ using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
-using System.Web.Http;
-using System.Web.Http.Description;
 using hrcloud_test.Models;
+using System.Web.Mvc;
 
 namespace hrcloud_test.Controllers
 {
-    public class ContactsController : ApiController
+    public class ContactsController : Controller//ApiController
     {
         private ContactListContext db = new ContactListContext();
 
-        public class SimpleContact
-        {
-            public int ContactId { get; set; }
-            public string Tag { get; set; }
-            public string Name { get; set; }
-            public string Surname { get; set; }
-            public string Address { get; set; }
-        }
-
         // GET: api/Contacts
+        [HttpGet]
         [Route("api/Contacts")]
-        public List<Contact> GetContact()
+        public JsonResult GetContact()
         {
-            return db.Contact.ToList();
+            var query = from c in db.Contact
+                        select new SimpleContact
+                        {
+                            ContactId = c.ContactId,
+                            Tag = c.Tag,
+                            Name = c.Name,
+                            Surname = c.Surname,
+                            Address = c.Address,
+                        };
+            return this.Json(query, JsonRequestBehavior.AllowGet);
         }
 
         // GET: api/Contacts/5
+        [HttpGet]
         [Route("api/Contacts/{id}")]
-        [ResponseType(typeof(Contact))]
-        public IHttpActionResult GetContact(int id)
+        public JsonResult GetContact(int id)
         {
             var query = from c in db.Contact
                         where c.ContactId == id
@@ -47,11 +47,12 @@ namespace hrcloud_test.Controllers
                             Surname = c.Surname,
                             Address = c.Address,
                         };
-            return Ok(query.ToList());
+            return this.Json(query, JsonRequestBehavior.AllowGet);
         }
 
+        [HttpGet]
         [Route("api/Contacts/search/{target}")]
-        public List<SimpleContact> GetByString(string target) {
+        public JsonResult GetByString(string target) {
             var query = from c in db.Contact
                         where (c.Tag.Contains(target))
                         ||(c.Name.Contains(target))
@@ -64,22 +65,22 @@ namespace hrcloud_test.Controllers
                             Surname = c.Surname,
                             Address = c.Address,
                         };
-                return query.ToList();
+            return this.Json(query, JsonRequestBehavior.AllowGet);
         }
 
         // PUT: api/Contacts/5
+        [HttpPut]
         [Route("api/Contacts/{id}")]
-        [ResponseType(typeof(void))]
-        public IHttpActionResult PutContact(int id, Contact contact)
+        public HttpStatusCodeResult PutContact(int id, Contact contact)
         {
             if (!ModelState.IsValid)
             {
-                return BadRequest(ModelState);
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest, "Bad Request");
             }
 
             if (id != contact.ContactId)
             {
-                return BadRequest();
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest, "Bad Request");
             }
 
             db.Entry(contact).State = EntityState.Modified;
@@ -92,7 +93,7 @@ namespace hrcloud_test.Controllers
             {
                 if (!ContactExists(id))
                 {
-                    return NotFound();
+                    return new HttpStatusCodeResult(HttpStatusCode.NotFound, "Not Found");
                 }
                 else
                 {
@@ -100,40 +101,40 @@ namespace hrcloud_test.Controllers
                 }
             }
 
-            return StatusCode(HttpStatusCode.NoContent);
+            return new HttpStatusCodeResult(HttpStatusCode.NoContent, "No Content");
         }
 
         // POST: api/Contacts
+        [HttpPost]
         [Route("api/Contacts")]
-        [ResponseType(typeof(Contact))]
-        public IHttpActionResult PostContact(Contact contact)
+        public HttpStatusCodeResult PostContact(Contact contact)
         {
             if (!ModelState.IsValid)
             {
-                return BadRequest(ModelState);
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest, "Bad Request");
             }
 
             db.Contact.Add(contact);
             db.SaveChanges();
 
-            return Ok(contact);
+            return new HttpStatusCodeResult(HttpStatusCode.OK, "OK");
         }
 
         // DELETE: api/Contacts/5
+        [HttpDelete]
         [Route("api/Contacts/{id}")]
-        [ResponseType(typeof(Contact))]
-        public IHttpActionResult DeleteContact(int id)
+        public HttpStatusCodeResult DeleteContact(int id)
         {
             Contact contact = db.Contact.Find(id);
             if (contact == null)
             {
-                return NotFound();
+                return new HttpStatusCodeResult(HttpStatusCode.NotFound, "Not Found");
             }
 
             db.Contact.Remove(contact);
             db.SaveChanges();
 
-            return Ok(contact);
+            return new HttpStatusCodeResult(HttpStatusCode.OK, "OK");
         }
 
         protected override void Dispose(bool disposing)

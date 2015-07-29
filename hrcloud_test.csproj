@@ -129,7 +129,6 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\ContactsController.cs" />
     <Compile Include="Controllers\EmailAddrsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -141,6 +140,7 @@
     <Compile Include="Models\ContactListContext.cs" />
     <Compile Include="Models\ContactListInitializer.cs" />
     <Compile Include="Models\EmailAddr.cs" />
+    <Compile Include="Models\SimpleContact.cs" />
     <Compile Include="Models\TelNum.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -170,7 +170,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Search\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

@@ -6,13 +6,12 @@ using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
-using System.Web.Http;
-using System.Web.Http.Description;
 using hrcloud_test.Models;
+using System.Web.Mvc;
 
 namespace hrcloud_test.Controllers
 {
-    public class TelNumsController : ApiController
+    public class TelNumsController : Controller
     {
         private ContactListContext db = new ContactListContext();
 
@@ -22,8 +21,9 @@ namespace hrcloud_test.Controllers
             public int Id { get; set; }
         }
         // GET: api/TelNums/5
-        [ResponseType(typeof(Tel))]
-        public List<Tel> GetTelNum(int id)
+        [HttpGet]
+        [Route("api/TelNums/{id}")]
+        public JsonResult GetTelNum(int id)
         {
             var query = from t in db.TelNum
                         where t.ContactId == id
@@ -32,38 +32,40 @@ namespace hrcloud_test.Controllers
                             Number = t.Number,
                             Id = t.TelNumId
                         };
-            return query.ToList();
+            return this.Json(query, JsonRequestBehavior.AllowGet);
         }
 
         // POST: api/TelNums
-        [ResponseType(typeof(TelNum))]
-        public IHttpActionResult PostTelNum(TelNum telNum)
+        [HttpPost]
+        [Route("api/TelNums/{id}")]
+        public HttpStatusCodeResult PostTelNum(TelNum telNum)
         {
             if (!ModelState.IsValid)
             {
-                return BadRequest(ModelState);
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest, "Bad Request");
             }
 
             db.TelNum.Add(telNum);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = telNum.TelNumId }, telNum);
+            return new HttpStatusCodeResult(HttpStatusCode.OK, "OK");
         }
 
         // DELETE: api/TelNums/5
-        [ResponseType(typeof(TelNum))]
-        public IHttpActionResult DeleteTelNum(int id)
+        [HttpDelete]
+        [Route("api/TelNums/{id}")]
+        public HttpStatusCodeResult DeleteTelNum(int id)
         {
             TelNum telNum = db.TelNum.Find(id);
             if (telNum == null)
             {
-                return NotFound();
+                return new HttpStatusCodeResult(HttpStatusCode.NotFound, "Not Found");
             }
 
             db.TelNum.Remove(telNum);
             db.SaveChanges();
 
-            return Ok(telNum);
+            return new HttpStatusCodeResult(HttpStatusCode.OK, "OK");
         }
 
         protected override void Dispose(bool disposing)

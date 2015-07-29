@@ -6,13 +6,12 @@ using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
-using System.Web.Http;
-using System.Web.Http.Description;
 using hrcloud_test.Models;
+using System.Web.Mvc;
 
 namespace hrcloud_test.Controllers
 {
-    public class EmailAddrsController : ApiController
+    public class EmailAddrsController : Controller
     {
         private ContactListContext db = new ContactListContext();
 
@@ -23,8 +22,9 @@ namespace hrcloud_test.Controllers
         }
 
         // GET: api/EmailAddrs/5
-        [ResponseType(typeof(List<Email>))]
-        public List<Email> GetEmailAddr(int id)
+        [HttpGet]
+        [Route("api/EmailAddrs/{id}")]
+        public JsonResult GetEmailAddr(int id)
         {
             var query = from e in db.EmailAddr
                         where e.ContactId == id
@@ -33,38 +33,40 @@ namespace hrcloud_test.Controllers
                             Address = e.Address,
                             Id = e.EmailAddrId
                         };
-            return query.ToList();
+            return this.Json(query, JsonRequestBehavior.AllowGet);
         }
 
         // POST: api/EmailAddrs
-        [ResponseType(typeof(EmailAddr))]
-        public IHttpActionResult PostEmailAddr(EmailAddr emailAddr)
+        [HttpPost]
+        [Route("api/EmailAddrs/{id}")]
+        public HttpStatusCodeResult PostEmailAddr(EmailAddr emailAddr)
         {
             if (!ModelState.IsValid)
             {
-                return BadRequest(ModelState);
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest, "Bad Request");
             }
 
             db.EmailAddr.Add(emailAddr);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = emailAddr.EmailAddrId }, emailAddr);
+            return new HttpStatusCodeResult(HttpStatusCode.OK, "OK");
         }
 
         // DELETE: api/EmailAddrs/5
-        [ResponseType(typeof(EmailAddr))]
-        public IHttpActionResult DeleteEmailAddr(int id)
+        [HttpDelete]
+        [Route("api/EmailAddrs/{id}")]
+        public HttpStatusCodeResult DeleteEmailAddr(int id)
         {
             EmailAddr emailAddr = db.EmailAddr.Find(id);
             if (emailAddr == null)
             {
-                return NotFound();
+                return new HttpStatusCodeResult(HttpStatusCode.NotFound, "Not Found");
             }
 
             db.EmailAddr.Remove(emailAddr);
             db.SaveChanges();
 
-            return Ok(emailAddr);
+            return new HttpStatusCodeResult(HttpStatusCode.OK, "OK");
         }
 
         protected override void Dispose(bool disposing)
