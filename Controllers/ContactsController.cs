@@ -11,7 +11,7 @@ using System.Web.Mvc;
 
 namespace hrcloud_test.Controllers
 {
-    public class ContactsController : Controller//ApiController
+    public class ContactsController : Controller
     {
         private ContactListContext db = new ContactListContext();
 

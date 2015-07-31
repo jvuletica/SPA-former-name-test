@@ -5,7 +5,6 @@
     //return all contacts
     this.GetContacts = function () {
         return $http.get("/api/Contacts/");
-        //return $http.get("/Contacts1");
     };
     //return contact by id
     this.GetSingleContact = function (id) {
